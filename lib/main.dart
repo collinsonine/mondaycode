@@ -1,4 +1,5 @@
-import 'dart:ffi';
+// import 'dart:ffi';
+// import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -41,41 +42,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: Scaffold(
           drawer: const Drawer(),
           appBar: AppBar(
             backgroundColor: Colors.tealAccent[700],
             centerTitle: true,
-            title: const Text('List View App'),
+            title: const Text('My Contacts'),
           ),
           body: ListView.builder(
             itemCount: phoneNums.length,
             itemBuilder: (context, position) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Icon(
-                        Icons.person,
-                        size: 30,
-                        color: Colors.tealAccent.shade700,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 50),
-                        child: Text(
-                          phoneNums[position],
-                          style: const TextStyle(
-                              fontSize: 25,
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ],
+              return ListTile(
+                leading: const Icon(Icons.person),
+                title: Text(
+                  phoneNums[position],
+                  style: const TextStyle(
+                    fontSize: 20,
                   ),
                 ),
+                dense: false,
+                trailing: const Icon(Icons.menu),
+                subtitle: const Text('contact'),
+                iconColor: Colors.tealAccent[700],
               );
             },
           )),
